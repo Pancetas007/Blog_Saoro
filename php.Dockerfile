@@ -1,7 +1,6 @@
 FROM php:7.4.15-apache
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
-
 # change document root directory
 # ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 

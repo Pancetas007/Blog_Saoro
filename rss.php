@@ -1,14 +1,15 @@
 <?php
 
 //Implementar la consulta
-$pdo = new PDO("mysql:host=mysql-server;dbname=coffee-talks;charset-utf8", "root", "secret");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require("DOMDocument.php");
 
 //Fem la consulta
 $stmt = $pdo->prepare("SELECT * FROM article ORDER BY datart DESC LIMIT 5");
 $stmt->execute();
 
 $dataset = $stmt->fetchAll();
+
+date_default_timezone_set("Europe/Paris");
 
 //Indicarem a php que el que estem fent es per a crear un arxiu XML
 header('Content-type: text/xml; charset="unicode-UTF-8"', true);
@@ -20,19 +21,19 @@ header('Content-type: text/xml; charset="unicode-UTF-8"', true);
 <rss version="2.0">
     <channel>
         <title>Coffee Talks</title>
-        <description>Este el RSS de la pagina web de Saoro</description>
+        <description>Este el RSS de la pagina web de Salvador</description>
         <link>http://localhost:8080/</link>
-        <copyright>Salvador Bolta Martil </copyright>
-        <lastBuildDate><?= date("r") ?></lastBuildDate>
-        <pubDate><?= date("D, d M Y H:i:s T") ?></pubDate>
+        <copyright>Salvador Bolta Martil</copyright>
+        <lastBuildDate><?= date(DATE_RFC822) ?></lastBuildDate>
+        <pubDate><?= date(DATE_RFC822) ?></pubDate>
         <ttl>1800</ttl>
         <?php foreach ($dataset as $data) : ?>
             <item>
                 <title><?= $data["titart"] ?></title>
                 <description><?= $data["bodyart"] ?></description>
-                <link>http://localhost:8080/blog/post/1</link>
-                <guid isPermaLink="false">7bd204c6-1655-4c27-aeee-53f933c5395f</guid>
-                <pubDate><?= $data["datart"] ?></pubDate>
+                <link>http://localhost:8080/posts_show.php?id=<?= $data["codart"] ?></link>
+                <guid isPermaLink="false">http://localhost:8080/posts_show.php?id=<?= $data["codart"] ?></guid>
+                <pubDate><?= date(DATE_RFC822, strtotime($data["datart"])) ?></pubDate>
             </item>
         <?php endforeach; ?>
     </channel>

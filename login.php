@@ -13,12 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = filter_input(INPUT_POST, "username");
     $password = filter_input(INPUT_POST, "password");
     // TODO: Implementar la connexió a la base de dades
-    $pdo = new PDO("mysql:host=mysql-server;dbname=coffee-talks;charset-utf8", "root", "secret");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require("DOMDocument.php");
     // TODO: Implementar la consulta
     $stmt = $pdo->prepare("SELECT * FROM usuari WHERE userusu=:username");
     $stmt->bindValue('username', $user);
     $stmt->execute();
+
 
     // comprove l'usuari i la contrasenya
     $row = $stmt->fetch();
@@ -52,33 +52,42 @@ else {
 
 <head>
     <title>Coffee Talk Blog</title>
+    <link rel="stylesheet" href="estils.css">
 </head>
 
 <body>
-    <h1>Welcome to Coffee Talk Blog</h1>
+    <div class="centro">
 
-    <?php if ($isFormSubmitted) : ?>
-        <?php if (empty($error)) : ?>
-            <p>Login successful. Great to see you back <?= $fullname ?></p>
-        <?php else : ?>
-            <p>Error: <?= $error ?>. <a href="login.php">Try again</a></p>
-        <?php endif; ?>
-    <?php else : ?>
-        <form class="table" action="login.php" method="post">
-            <div>
-                <label>Username:</label>
-                <input type="text" name="username" value="" />
-            </div>
-            <div>
-                <label>Password:</label>
-                <input type="text" name="password" value="" />
-            </div>
-            <input type="submit" value="login">
-        </form>
-    <?php endif; ?>
+        <div class="footer">
+            <?php require("footer.php") ?>
+        </div>
 
-    <?php require("footer.php") ?>
+        <h1>Welcome to Coffee Talk Blog</h1>
 
+        <div class="login">
+            <?php if ($isFormSubmitted) : ?>
+                <?php if (empty($error)) : ?>
+                    <p>Login successful. Great to see you back <?= $fullname ?></p>
+                <?php else : ?>
+                    <p>Error: <?= $error ?>. <a href="login.php">Try again</a></p>
+                <?php endif; ?>
+            <?php else : ?>
+
+                <form class="table" action="login.php" method="post">
+                    <div>
+                        <label>Username:</label>
+                        <input type="text" name="username" value="" />
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="text" name="password" value="" />
+                    </div>
+                    <input type="submit" value="login">
+                </form>
+            <?php endif; ?>
+        </div>
+        <div> <img src="java.png" alt="img" /> </div>
+    </div>
 </body>
 
 </html>
