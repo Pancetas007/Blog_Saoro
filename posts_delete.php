@@ -19,13 +19,15 @@ $article = $stmt->fetch();
 
 <head>
     <title>Coffee Talk Blog</title>
+    <link rel="stylesheet" href="estils.css">
 </head>
 
 <body>
+    <div class="centro">
+        <div class="footer">
+            <?php require("footer.php") ?>
+        </div>
     <h1>Welcome to Coffee Talk Blog</h1>
-
-
-
 
     <?php if ($_SERVER["REQUEST_METHOD"] === "POST") : ?>
 
@@ -60,8 +62,7 @@ $article = $stmt->fetch();
             <p><input type="submit" name="si" value="SI"> <input type="submit" name="no" value="NO"></p>
         </form>
     <?php endif; ?>
-
-
+    </div>
 </body>
 
 </html>

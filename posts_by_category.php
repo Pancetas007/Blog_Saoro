@@ -17,20 +17,28 @@ $artcategories = $stmt->fetchAll();
 
 <head>
     <title>Coffee Talk Blog</title>
+    <link rel="stylesheet" href="estils.css">
 </head>
 
 <body>
+    <div class="centro">
+        <div class="footer">
+            <?php require("footer.php") ?>
+        </div>
     <h1>Welcome to Coffee Talk Blog</h1>
+    <div id="user">
     <h2>En la Categoria <?= $artcategories[0]["nomcat"] ?></h2>
     <ul>
         <?php foreach ($artcategories as $catarticle) : ?>
+        <div id="flexIndice">
             <li>
                 <a href="posts_show.php?id=<?= $catarticle["codcat"] ?>"><?= $catarticle["titart"] ?></a> from the <?= $catarticle["nomusu"] ?>
             </li>
+        </div>
         <?php endforeach; ?>
     </ul>
-
-    <?php require("footer.php") ?>
+    </div>
+    </div>
 </body>
 
 </html>

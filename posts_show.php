@@ -33,6 +33,9 @@ $article = $stmt->fetch();
 
 <body>
    <div class="centro">
+       <div class="footer">
+           <?php require("footer.php") ?>
+       </div>
       <h1>Welcome to Coffee Talk Blog</h1>
       <!--TODO: Comprovar que l'article existeix //-->
       <?php if (empty($article)) : ?>
@@ -50,10 +53,6 @@ $article = $stmt->fetch();
             <p><a href='posts_edit.php?id=<?= $article["codart"] ?>'>Edit</a> || <a href='posts_delete.php?id=<?= $article["codart"] ?>'>Delete</a> || <a href='comments_add.php'>Add a comment</a></p>
          </div>
       <?php endif; ?>
-
-      <div class="footer">
-         <?php require("footer.php") ?>
-      </div>
    </div>
 </body>
 

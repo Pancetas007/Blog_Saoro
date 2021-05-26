@@ -17,23 +17,31 @@ $articles = $stmt->fetchAll();
 
 <head>
     <title>Coffee Talk Blog</title>
+    <link rel="stylesheet" href="estils.css">
 </head>
 
 <body>
+    <div class="centro">
+        <div class="footer">
+            <?php require("footer.php") ?>
+        </div>
     <h1>Welcome to Coffee Talk Blog</h1>
     <!--TODO: Show posts -->
 
+    <div id="user">
     <h2>Publicat per <?= $articles[0]["nomusu"] ?></h2>
 
     <ul>
         <?php foreach ($articles as $article) : ?>
+        <div id="flexIndice">
             <li>
                 <a href="posts_show.php?id=<?= $article["codart"] ?>"><?= $article["titart"] ?></a> from the <?= $article["nomcat"] ?>
             </li>
+        </div>
         <?php endforeach; ?>
     </ul>
-
-    <?php require("footer.php") ?>
+    </div>
+    </div>
 </body>
 
 </html>

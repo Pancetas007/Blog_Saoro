@@ -68,13 +68,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <head>
     <title>Coffee Talk Blog</title>
+    <link rel="stylesheet" href="estils.css">
 </head>
 
 <body>
+    <div class="centro">
+        <div class="footer">
+            <?php require("footer.php") ?>
+        </div>
     <h1>Welcome to Coffee Talk Blog</h1>
 
     <?php if ($isPost === false) : ?>
 
+        <div id="add">
         <!--TODO: 2.1. Mostrar formulari //-->
         <form acction="post_add.php" method="post">
             <p>Titol de l'article <input type="text" name="titart" value="<?= $article['titart'] ?>"></p>
@@ -82,6 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <textarea name="bodyart" rows="10" cols="45" placeholder="Introdueix el cos del article..."><?= $article['bodyart'] ?></textarea>
             <p><input type="submit" value="Enviar"></p>
         </form>
+        </div>
     <?php else : ?>
 
         <!--TODO: 2.3.1. Mostrar errors de validació //-->
@@ -93,8 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php endif; ?>
 
     <?php endif; ?>
-
-    <?php require("footer.php") ?>
+    </div>
 </body>
 
 </html>
