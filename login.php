@@ -26,20 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "Login error";
     } else {
         if ($row["passusu"] == $password) {
-            $authenticatedUser = true;
+
+            // creem una variable de sessió anomenada user
+            $_SESSION["user"] = $row["codusu"];
+        } else {
+            $error = "Login error";
         }
-    }
-    // TODO: comprovar el resultat de la consulta
-    if ($user == "admin" && $password == "admin") {
-        $fullname = "Admin admin";
-
-        // s'ha autenticat correctament
-        $authenticatedUser = true;
-
-        // creem una variable de sessió anomenada user
-        $_SESSION["user"] = $row["codusu"];
-    } else {
-        $error = "Login error";
     }
 }
 // si no s'ha enviat ho indiquem
@@ -63,29 +55,20 @@ else {
         </div>
 
         <h1>Welcome to Coffee Talk Blog</h1>
-
-        <div class="login">
-            <?php if ($isFormSubmitted) : ?>
-                <?php if (empty($error)) : ?>
-                    <p>Login successful. Great to see you back <?= $fullname ?></p>
-                <?php else : ?>
-                    <p>Error: <?= $error ?>. <a href="login.php">Try again</a></p>
-                <?php endif; ?>
+        <?php if ($isFormSubmitted) : ?>
+            <?php if (empty($error)) : ?>
+                <p>Login successful. Great to see you back <?= $fullname ?></p>
             <?php else : ?>
-
-                <form class="table" action="login.php" method="post">
-                    <div>
-                        <label>Username:</label>
-                        <input type="text" name="username" value="" />
-                    </div>
-                    <div>
-                        <label>Password:</label>
-                        <input type="text" name="password" value="" />
-                    </div>
-                    <input type="submit" value="login">
-                </form>
+                <p>Error: <?= $error ?>. <a href="login.php">Try again</a></p>
             <?php endif; ?>
-        </div>
+        <?php else : ?>
+            <form class="table" action="login.php" method="post">
+                <h5>Formulario Login</h5>
+                <input class="controls" type="text" name="username" value="" placeholder="Usuario">
+                <input class="controls" type="password" name="password" value="" placeholder="Contraseña">
+                <input class="buttons" type="submit" name="" value="Login">
+            </form>
+        <?php endif; ?>
         <div> <img src="java.png" alt="img" /> </div>
     </div>
 </body>
