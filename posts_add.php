@@ -40,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //Conexió a la base de dades
         require("DOMDocument.php");
 
-
         $codusu = $_SESSION["user"];
         $datart = date("Y-m-d");
 
@@ -56,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindValue("datart", $datart);
 
         $stmt->execute();
+
+        $newId = $pdo->lastInsertId();   
     }
     // TODO: 2.2. Obtenir les dades del formulari
     // TODO: 2.3. Validar les dades
@@ -107,12 +108,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <!--TODO: 2.3.1. Mostrar errors de validació //-->
             <?php if ($isValid === true) : ?>
                 <p>S'han creat el post amb exit</p>
-
+                <p><a href='posts_edit.php?id=<?=$newId?>'>Edit</a> || <a href='posts_delete.php'>Delete</a> || <a href='comments_add.php'>Add a comment</a></p>
             <?php else : ?>
                 <p>No s'ha creat el post</p>
             <?php endif; ?>
             <!--TODO: 2.3.3. Mostrar missatge de confirmació //-->
-            <p><a href='posts_edit.php?id=<?= $article1["codart"] ?>'>Edit</a> || <a href='posts_delete.php'>Delete</a> || <a href='comments_add.php'>Add a comment</a></p>
         <?php endif; ?>
     </div>
 </body>
