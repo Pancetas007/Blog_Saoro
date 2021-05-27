@@ -14,7 +14,10 @@ session_destroy();
 <body>
     <div class="centro">
         <div class="footer">
-            <?php require("footer.php") ?>
+            <ul class="menu">
+                <li><a href='login.php'>Login</a></li>
+                <li><a href='rss.php'>RSS</a></li>
+            </ul>
         </div>
     <h1>Welcome to Coffee Talk Blog</h1>
     <p>You has been logged out properly!</p>

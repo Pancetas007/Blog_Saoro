@@ -33,9 +33,9 @@ $article = $stmt->fetch();
 
 <body>
    <div class="centro">
-       <div class="footer">
-           <?php require("footer.php") ?>
-       </div>
+      <div class="footer">
+         <?php require("footer.php") ?>
+      </div>
       <h1>Welcome to Coffee Talk Blog</h1>
       <!--TODO: Comprovar que l'article existeix //-->
       <?php if (empty($article)) : ?>

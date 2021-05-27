@@ -156,7 +156,7 @@ h1{
     text-align: center;
     position: relative;
     color: red;
-    font-family: "Freestyle Script", cursive;
+    font-family: "Arial", cursive;
 }
 
 h1::after, h1::before{
@@ -169,9 +169,9 @@ h1::after, h1::before{
 }
 
 h1::after{
-    right: 200px;
+    right: 120px;
 }
 
 h1::before{
-    left: 200px;
+    left: 120px;
 }
