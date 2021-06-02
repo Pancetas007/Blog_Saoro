@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
 // TODO: Obtenir l'id enviat pel query string
@@ -21,26 +22,27 @@ $articles = $stmt->fetchAll();
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-        <div class="footer">
-            <?php require("footer.php") ?>
-        </div>
-    <h1>Welcome to Coffee Talk Blog</h1>
-    <!--TODO: Show posts -->
+        <h1>Welcome to Coffee Talk Blog</h1>
+        <!--TODO: Show posts -->
 
-    <div id="user">
-    <h2>Publicat per <?= $articles[0]["nomusu"] ?></h2>
+        <div id="user">
+            <h2>Publicat per <?= $articles[0]["nomusu"] ?></h2>
 
-    <ul>
-        <?php foreach ($articles as $article) : ?>
-        <div id="flexIndice">
-            <li>
-                <a href="posts_show.php?id=<?= $article["codart"] ?>"><?= $article["titart"] ?></a> from the <?= $article["nomcat"] ?>
-            </li>
+            <ul>
+                <?php foreach ($articles as $article) : ?>
+                    <div id="flexIndice">
+                        <li>
+                            <a href="posts_show.php?id=<?= $article["codart"] ?>"><?= $article["titart"] ?></a> from the <?= $article["nomcat"] ?>
+                        </li>
+                    </div>
+                <?php endforeach; ?>
+            </ul>
         </div>
-        <?php endforeach; ?>
-    </ul>
-    </div>
     </div>
 </body>
 

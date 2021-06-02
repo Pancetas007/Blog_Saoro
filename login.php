@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 // activem la gestió de sessions
 session_start();
@@ -48,12 +49,11 @@ else {
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-
-        <div class="footer">
-            <?php require("footer.php") ?>
-        </div>
-
         <h1>Welcome to Coffee Talk Blog</h1>
         <?php if ($isFormSubmitted) : ?>
             <?php if (empty($error)) : ?>

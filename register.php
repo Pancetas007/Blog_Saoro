@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 session_start();
 
@@ -42,10 +43,11 @@ if (isset($_POST["register_but"])) {
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-        <div class="footer">
-            <?php require("footer.php") ?>
-        </div>
 
         <h1>Welcome to Coffee Talk Blog</h1>
 

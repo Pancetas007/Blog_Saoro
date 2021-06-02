@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 session_start();
 session_unset();
@@ -12,15 +13,13 @@ session_destroy();
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+    
     <div class="centro">
-        <div class="footer">
-            <ul class="menu">
-                <li><a href='login.php'>Login</a></li>
-                <li><a href='rss.php'>RSS</a></li>
-            </ul>
-        </div>
-    <h1>Welcome to Coffee Talk Blog</h1>
-    <p>You has been logged out properly!</p>
+        <h1>Welcome to Coffee Talk Blog</h1>
+        <p>You has been logged out properly!</p>
     </div>
 </body>
 

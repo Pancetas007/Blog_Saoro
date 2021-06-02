@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 // activem la gestió de sessions
 session_start();
@@ -82,41 +83,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-        <div class="footer">
-            <?php require("footer.php") ?>
-        </div>
-    <h1>Welcome to Coffee Talk Blog</h1>
+        <h1>Welcome to Coffee Talk Blog</h1>
+ 
+        <?php if ($isPost === false) : ?>
 
-    <?php if ($isPost === false) : ?>
-
-        <div id="add">
-        <!--TODO: 2.1. Mostrar formulari //-->
-        <form acction="post_add.php" method="post">
-            <p>Titol de l'article <input type="text" name="titart"></p>
-            <p>Cos de l'article</p>
-            <textarea name="bodyart" rows="10" cols="45" placeholder="Introdueix el cos del article..."></textarea>
-            <p>Categoria</p>
-            <select name="codcat">
-                <?php foreach ($categories as $categoria) : ?>
-                    <option value="<?= $categoria["codcat"] ?>"><?= $categoria["nomcat"] ?></option>
-                <?php endforeach; ?>
-            </select>
-            <p><input type="submit" value="Enviar"></p>
-        </form>
-        </div>
-    <?php else : ?>
-
-        <!--TODO: 2.3.1. Mostrar errors de validació //-->
-        <?php if ($isValid === true) : ?>
-            <p>S'han creat el post amb exit</p>
-
+            <div id="add">
+                <!--TODO: 2.1. Mostrar formulari //-->
+                <form acction="post_add.php" method="post">
+                    <p>Titol de l'article <input type="text" name="titart"></p>
+                    <p>Cos de l'article</p>
+                    <textarea name="bodyart" rows="10" cols="45" placeholder="Introdueix el cos del article..."></textarea>
+                    <p>Categoria</p>
+                    <select name="codcat">
+                        <?php foreach ($categories as $categoria) : ?>
+                            <option value="<?= $categoria["codcat"] ?>"><?= $categoria["nomcat"] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p><input type="submit" value="Enviar"></p>
+                </form>
+            </div>
         <?php else : ?>
-            <p>No s'ha creat el post</p>
+
+            <!--TODO: 2.3.1. Mostrar errors de validació //-->
+            <?php if ($isValid === true) : ?>
+                <p>S'han creat el post amb exit</p>
+
+            <?php else : ?>
+                <p>No s'ha creat el post</p>
+            <?php endif; ?>
+            <!--TODO: 2.3.3. Mostrar missatge de confirmació //-->
+            <p><a href='posts_edit.php'>Edit</a> || <a href='posts_delete.php'>Delete</a> || <a href='comments_add.php'>Add a comment</a></p>
         <?php endif; ?>
-        <!--TODO: 2.3.3. Mostrar missatge de confirmació //-->
-        <p><a href='posts_edit.php'>Edit</a> || <a href='posts_delete.php'>Delete</a> || <a href='comments_add.php'>Add a comment</a></p>
-    <?php endif; ?>
     </div>
 </body>
 
