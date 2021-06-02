@@ -65,8 +65,7 @@
     padding: 10px;
 }
 
-.centro img{
-    float: right;
+.centro img{ 
     height: 200;
 }
 
@@ -109,7 +108,7 @@
 }
 
 .controls{
-    width: 100%;
+    width: 95%;
     border: 1px solid #017bab;
     margin-bottom: 15px;
     padding: 11px 10px;

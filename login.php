@@ -68,8 +68,8 @@ else {
                 <input class="controls" type="password" name="password" value="" placeholder="Contraseña">
                 <input class="buttons" type="submit" name="" value="Login">
             </form>
+            <div style="text-align: right"> <img src="java.png" alt="img" /> </div> 
         <?php endif; ?>
-        <div> <img src="java.png" alt="img" /> </div>
     </div>
 </body>
 
