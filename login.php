@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 // activem la gestió de sessions
 session_start();
@@ -48,19 +49,20 @@ else {
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-
-        <div class="footer">
-            <?php require("footer.php") ?>
-        </div>
-
         <h1>Welcome to Coffee Talk Blog</h1>
         <?php if ($isFormSubmitted) : ?>
-            <?php if (empty($error)) : ?>
-                <p>Login successful. Great to see you back <?= $fullname ?></p>
-            <?php else : ?>
-                <p>Error: <?= $error ?>. <a href="login.php">Try again</a></p>
-            <?php endif; ?>
+            <div id="pLogin">
+                <?php if (empty($error)) : ?>
+                    <p>Login successful. Great to see you back <?= $fullname ?></p>
+                <?php else : ?>
+                    <p>Error: <?= $error ?>. <a href="login.php">Try again</a></p>
+                <?php endif; ?>
+            </div>
         <?php else : ?>
             <form class="table" action="login.php" method="post">
                 <h5>Formulario Login</h5>
@@ -68,8 +70,8 @@ else {
                 <input class="controls" type="password" name="password" value="" placeholder="Contraseña">
                 <input class="buttons" type="submit" name="" value="Login">
             </form>
+
         <?php endif; ?>
-        <div> <img src="java.png" alt="img" /> </div>
     </div>
 </body>
 

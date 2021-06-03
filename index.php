@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 session_start();
 $loggedUser = $_SESSION["user"] ?? "";
@@ -12,6 +13,7 @@ $rows = $stmt->fetchAll();
 
 //var_dump($rows); //Mostrem l'array per comprovar que tenim dades
 ?>
+
 <html>
 
 <head>
@@ -20,13 +22,16 @@ $rows = $stmt->fetchAll();
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-        <div class="footer">
-            <?php require("footer.php") ?>
-        </div>
         <h1>Welcome to Coffee Talk Blog</h1>
         <?php if (empty($loggedUser)) : ?>
-            <p>Please <a href="login.php">login</a>.</p>
+            <div id="pLogin">
+                <p>Please <a href="login.php">login</a>.</p>
+            </div>
         <?php else : ?>
             <!--TODO: Show posts -->
             <div id="indice">
@@ -41,7 +46,7 @@ $rows = $stmt->fetchAll();
                 </ul>
             </div>
             <div id="addPost">
-                <p>Clic to <a href="posts_add.php">add</a> a posting.</p>
+                <p>Clic to <a href="post_add.php">add</a> a posting.</p> 
             </div>
         <?php endif; ?>
     </div>

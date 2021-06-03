@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
 // TODO: Obtenir l'id enviat pel query string
@@ -21,23 +22,24 @@ $artcategories = $stmt->fetchAll();
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-        <div class="footer">
-            <?php require("footer.php") ?>
+        <h1>Welcome to Coffee Talk Blog</h1>
+        <div id="user">
+            <h2>En la Categoria <?= $artcategories[0]["nomcat"] ?></h2>
+            <ul>
+                <?php foreach ($artcategories as $catarticle) : ?>
+                    <div id="flexIndice">
+                        <li>
+                            <a href="posts_show.php?id=<?= $catarticle["codcat"] ?>"><?= $catarticle["titart"] ?></a> from the <?= $catarticle["nomusu"] ?>
+                        </li>
+                    </div>
+                <?php endforeach; ?>
+            </ul>
         </div>
-    <h1>Welcome to Coffee Talk Blog</h1>
-    <div id="user">
-    <h2>En la Categoria <?= $artcategories[0]["nomcat"] ?></h2>
-    <ul>
-        <?php foreach ($artcategories as $catarticle) : ?>
-        <div id="flexIndice">
-            <li>
-                <a href="posts_show.php?id=<?= $catarticle["codcat"] ?>"><?= $catarticle["titart"] ?></a> from the <?= $catarticle["nomusu"] ?>
-            </li>
-        </div>
-        <?php endforeach; ?>
-    </ul>
-    </div>
     </div>
 </body>
 

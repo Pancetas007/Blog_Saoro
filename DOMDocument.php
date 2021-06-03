@@ -1,7 +1,7 @@
 <?php 
+
 $configXML = new DOMDocument();
 $configXML -> load("config.xml");
-
 
 $hosts = $configXML-> getElementsByTagName("host");
 $host = $hosts[0]->nodeValue;

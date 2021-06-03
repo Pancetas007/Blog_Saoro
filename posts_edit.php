@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
 // TODO: Obtenir l'id enviat pel query string
@@ -72,34 +73,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body>
+    <header>
+        <?php require("footer.php") ?>
+    </header>
+
     <div class="centro">
-        <div class="footer">
-            <?php require("footer.php") ?>
-        </div>
-    <h1>Welcome to Coffee Talk Blog</h1>
+        <h1>Welcome to Coffee Talk Blog</h1>
 
-    <?php if ($isPost === false) : ?>
+        <?php if ($isPost === false) : ?>
 
-        <div id="add">
-        <!--TODO: 2.1. Mostrar formulari //-->
-        <form acction="post_add.php" method="post">
-            <p>Titol de l'article <input type="text" name="titart" value="<?= $article['titart'] ?>"></p>
-            <p>Cos de l'article</p>
-            <textarea name="bodyart" rows="10" cols="45" placeholder="Introdueix el cos del article..."><?= $article['bodyart'] ?></textarea>
-            <p><input type="submit" value="Enviar"></p>
-        </form>
-        </div>
-    <?php else : ?>
-
-        <!--TODO: 2.3.1. Mostrar errors de validació //-->
-        <?php if ($isValid === true) : ?>
-            <p>S'han editat el post amb exit</p>
-
+            <div id="add">
+                <!--TODO: 2.1. Mostrar formulari //-->
+                <form acction="post_add.php" method="post">
+                    <p>Titol de l'article <input type="text" name="titart" value="<?= $article['titart'] ?>"></p>
+                    <p>Cos de l'article</p>
+                    <textarea name="bodyart" rows="10" cols="45" placeholder="Introdueix el cos del article..."><?= $article['bodyart'] ?></textarea>
+                    <p><input type="submit" value="Enviar"></p>
+                </form>
+            </div>
         <?php else : ?>
-            <p>No s'ha editat el post</p>
-        <?php endif; ?>
 
-    <?php endif; ?>
+            <!--TODO: 2.3.1. Mostrar errors de validació //-->
+            <div id="pLogin">
+                <?php if ($isValid === true) : ?>
+                    <p>S'han editat el post amb exit</p>
+
+                <?php else : ?>
+                    <p>No s'ha editat el post</p>
+                <?php endif; ?>
+            </div>
+
+        <?php endif; ?>
     </div>
 </body>
 

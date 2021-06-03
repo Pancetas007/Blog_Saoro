@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 // activem la gestió de sessions
 session_start();
@@ -26,16 +27,17 @@ $article = $stmt->fetch();
 
 <html>
 
-<head>
+<head> 
    <title>Coffee Talk Blog</title>
    <link rel="stylesheet" href="estils.css">
 </head>
 
 <body>
+   <header>
+      <?php require("footer.php") ?>
+   </header>
+
    <div class="centro">
-       <div class="footer">
-           <?php require("footer.php") ?>
-       </div>
       <h1>Welcome to Coffee Talk Blog</h1>
       <!--TODO: Comprovar que l'article existeix //-->
       <?php if (empty($article)) : ?>
